@@ -105,7 +105,7 @@ You will be prompted install synology services, enable warranty and enable 2FA w
 16. Set a **Vault Password**<br />*Have this password in a secure location*
 17. Click **Enable**
 18. Click **Apply**
-19. It will download the **Recovery Key**<br />*Reminder to keep this file in a secure location and recoverable. You will only need this file or password when someone is has the nas physically and attempting to hack into it.*
+19. It will download the **Recovery Key**<br />*Reminder to keep this file in a secure location and recoverable. You will only need this file or password when someone is has the nas physically and attempting to hack into it.*<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/4634a91a7f3336635ef6a524abbee730786daec0/Synology%20Storage%20Manager%20Overview.png" width="500">
 
 **Create Read SSD Cache**
 
@@ -122,6 +122,76 @@ You will be prompted install synology services, enable warranty and enable 2FA w
 10. For **Modify allocated capacity (GB)** allocate 10%-20% less of the max capacity of your SSD drive. For 372 GB would be **300**
 11. Click **Apply**
 
+**NAS Application**
+I would recommend installing some applications such as Synology Photos, Hybrid Share, Surveillance Station, Surveillance Video Extension, Advanced Media Extensions, Synology Drive Server, Synology Contact, and Active Backup for Business.
+
+1. Open **Package Center**
+2. Select **All Packages**
+3. Select the **Application** you want to install
+4. Click **Install**
+
+## Create Users and Groups**
+
+Recommend to create normal users that does not have the same level as admin. These users could me your main account to access all the apps as a user to separate your admin account that you created in the initial setup. We use naming schema Admins= **ADM_username+number** Normal Users= **username+number**. We will demonstrate **Basic Users**, **Super Users**.
+
+**Create Users**
+1. Open **Control Panel**
+2. Click **Create** to create a new user
+3. Fill in the **Name**, **Email**, and **Password**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/c891e862f25a1d9eb1eca41c8a24313adf2b0bd7/Synology%20Create%20User.png" width="500">
+4. Click **Next**
+5. Click **Next**
+6. Click **Next**
+7. Click **Next**
+8. Click **Next**
+9. Click **Done**
+
+**Create Basic Groups**
+1. Within **Users & Groups**
+2. Select **Groups**
+3. Click **Create**
+4. For **Group Name** put the desired name, we are going to put **Basic Users**
+5. Select the **basic users**
+6. Select the desired apps in the **Read Only** column<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/07cdb17de893bd141777975608d6433a004c8833/Synology%20Group%20Creation%20Wizard%20Basic%20Users%20Permission%20.png" width="500">
+7. Click **Next**
+8. Click **Next**
+9. Select the **desired applications**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/7430fcc5b45b4d3170777711235c538bc36461f6/Synology%20Group%20Creation%20Wizard%20Basic%20Users%20App%20Access.png" width="500">
+10. Click **Next**
+11. Click **Next**
+12. Click **Done**
+
+**Create Super Users Group**
+This will be your main profile will be part of and will have access to all the application you want to access as a user with right permission to said applications.
+1. Within **Users & Groups**
+2. Select **Groups**
+3. Click **Create**
+4. For **Group Name** put the desired name, we are going to put **Super Users**
+5. Select the **Your main user profile**
+6. Select the desired apps in the **Read and Right permissions** column<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/9c797e08d083eaaff1b2ee9c3e17daee820981c6/Synology%20Super%20User%20Permission.png" width="500">
+7. Click **Next**
+8. Click **Next**
+9. Select the **desired applications**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/9c797e08d083eaaff1b2ee9c3e17daee820981c6/Synology%20Super%20User%20Access.png" width="500">
+10. Click **Next**
+11. Click **Next**
+12. Click **Done**
+
+**Create Shared Folder**
+
+After the storage pool and volume is created, we can now create a shared folder. Shared folders are the backbone of NAS units and are what you’ll store all your files on.
+
+1. Open **Control Panel**
+2. Click **Shared Folder**
+3. Click **Create**
+4. Select **Create Shared Folder**
+5. For **Name** put your desired name, we are going to put **Shared Media**
+6. Click **Next**
+7. Click **Next**
+8. Click **Enable data checksum for advanced data integrity**<br />*When we schedule Data scrubbing it will self-heal data with in the folder.*
+9. Click **Next** 
+10. Click **Next**
+11. Select **Local groups**
+12. Select  **Desired Permission** for each group<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/947f538d8f760d0b6f9d8d7075e426a8e5eee042/Synology%20Shared%20Folder%20Goup%20Permissoin.png" width="500">
+13. Click **Apply**
+
 ## Data Protection & Monitoring
 
 While the DSM is performing the dive check performance will be impacted. Next we'll schedule Data Scrubbing, SMART test, Snapshots, Recycle Bin Task, Storage Analyzer, UPS, and notifications.
@@ -129,3 +199,41 @@ While the DSM is performing the dive check performance will be impacted. Next we
 **Data scrubbing** inspects your volumes and modifies detected inconsistencies. In simple terms, this protects your NAS against bit-rot. There isn’t a specific schedule that’s mandatory, but it’s a good idea to run it at a minimum, bi-annually.
 
 1. Within **Storage Manager** select **Schedule Data Scrubbing**
+2. Click on **Enable data scrubbing scrubbing**
+3. Select all volumes
+4. For **Frequency** select **Repeat every three months**
+5. Click **Run data scrubbing only during specific periods**
+6. Click **Set Time Grid**
+7. Select from midnight to 5am<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/4634a91a7f3336635ef6a524abbee730786daec0/Synology%20Scedule%20Data%20Scrubbing.png" width="500">
+8. Click **OK**
+9. Click **Save**
+
+**S.M.A.R.T** tests the desks to determine if the any of the drives are going to fail soon.
+
+**Quick S.M.A.R.T test**
+1. Within **Storage Manager** select **HDD/SSD**
+2. Click **Settings**
+3. Click **Create**
+4. For **Task name** put **Quick SMART**
+5. Click **OK**
+
+**Extended S.M.A.R.T test**
+1. Click **Create**
+2. For **Task name** put **Quick SMART**
+3. For **S.M.A.R.T Test Type** select **Extended Test**
+4. Select **Schedule**
+5. Under the date select **Repeat every six months**br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/bbca92c3a9329b2b48ae02d1ce061beac443c889/Extended%20SMART.png" width="500">
+6. Click **OK**
+7. Click **Apply**
+
+**Enabling Snapshots & Recycle Bin**
+
+**Snapshots** are a feature of the Btrfs file system that allows you to capture the state of a folder at a specific point in time, enabling you to revert to that state later if needed.
+
+1. Open **Package Center**
+2. Search for **Snapshot**
+3. Install **Snapshot Replication**
+4. After install launch the **Snapshot Replication** application.
+5. Select the **Shared Folder** that you want to enable snapshots.
+6. Clcik **Snapshots**
+7. Click **Settings**
