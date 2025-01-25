@@ -9,4 +9,4 @@
 
 ## Project Scope
 
-**Objective**: To host services such as a file server, media server, media requester, photo storage, and reverse proxy that are able accessed via ip address or domain names.
+**Objective**: To host services such as a file server, media server, media requester, and photo storage that are able accessed via ip address or domain names.
