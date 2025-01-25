@@ -107,9 +107,24 @@ You will be prompted install synology services, enable warranty and enable 2FA w
 18. Click **Apply**
 19. It will download the **Recovery Key**<br />*Reminder to keep this file in a secure location and recoverable. You will only need this file or password when someone is has the nas physically and attempting to hack into it.*
 
+**Create Read SSD Cache**
+
+**SSD Read Cache** would allow regularly accessed files to be read of the speed of an SSD and not of the HDD.
+1. Within **Storage Manager** select **Volume 1**
+2. Click **Create**
+3. Select **Create SSD Cache**
+4. Click **Next**
+5. Select **Read only cache**
+6. Click **Next**
+7. Click **Next**
+8. Select **M.2 Drive**
+9. Click **Next**
+10. For **Modify allocated capacity (GB)** allocate 10%-20% less of the max capacity of your SSD drive. For 372 GB would be **300**
+11. Click **Apply**
+
 ## Data Protection & Monitoring
 
-While the DSM is performing the dive check performance will be impacted. Next we'll schedule Data Scrubbing, SMART test, Snapshots, Recycle Bin Task, Storage Analyzer,UPS, and notifications.
+While the DSM is performing the dive check performance will be impacted. Next we'll schedule Data Scrubbing, SMART test, Snapshots, Recycle Bin Task, Storage Analyzer, UPS, and notifications.
 
 **Data scrubbing** inspects your volumes and modifies detected inconsistencies. In simple terms, this protects your NAS against bit-rot. There isn’t a specific schedule that’s mandatory, but it’s a good idea to run it at a minimum, bi-annually.
 
