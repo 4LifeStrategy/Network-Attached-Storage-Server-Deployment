@@ -10,3 +10,11 @@
 ## Project Scope
 
 **Objective**: To host services such as a file server, media server, media requester, and photo storage that are able accessed via ip address or domain names.
+
+## Tools
+
+**Hardware**
+- [Synology  DS423+](https://www.synology.com/en-us/products/DS423+)
+- [4x Synology8TB SATA HDD](https://www.synology.com/en-us/products/drives/hdd/plus-hat#specs)
+- [Synology 400GB SNV3410 NVMe M.2 2280 SSD](https://www.synology.com/en-us/products/drives/ssd/enterprise-snv#specs)
+- [Synology 4GB DDR4 2666 MHz Non-ECC SO-DIMM Memory](https://www.synology.com/en-us/products/DDR4)
