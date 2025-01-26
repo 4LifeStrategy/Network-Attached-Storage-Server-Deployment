@@ -294,3 +294,13 @@ If your data is important to you, a UPS is the cheapest security blanket you can
 7. Set to **5 minute(s)**
 
 **Setup Notifications**
+
+Notification should had already been set if you completed the initial setup with a synology account. If you didn't follow these steps.
+
+1. Open **Control Panel**
+2. Click **Notification**
+3. Confirm that the box is **Checked** under **Synology Account**
+4. For **Rule** select **All**
+5. Click **Apply**
+
+## Security Configuration
