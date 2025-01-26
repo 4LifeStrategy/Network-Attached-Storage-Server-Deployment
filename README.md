@@ -222,18 +222,75 @@ While the DSM is performing the dive check performance will be impacted. Next we
 2. For **Task name** put **Quick SMART**
 3. For **S.M.A.R.T Test Type** select **Extended Test**
 4. Select **Schedule**
-5. Under the date select **Repeat every six months**br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/bbca92c3a9329b2b48ae02d1ce061beac443c889/Extended%20SMART.png" width="500">
+5. Under the date select **Repeat every six months**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/bbca92c3a9329b2b48ae02d1ce061beac443c889/Extended%20SMART.png" width="500">
 6. Click **OK**
 7. Click **Apply**
 
 **Enabling Snapshots & Recycle Bin**
 
-**Snapshots** are a feature of the Btrfs file system that allows you to capture the state of a folder at a specific point in time, enabling you to revert to that state later if needed.
+**Snapshots** are a feature of the Btrfs file system that allows you to capture the state of a folder at a specific point in time, enabling you to revert to that state later if needed. The follow steps will need to be done for each Shared Folder.
 
 1. Open **Package Center**
 2. Search for **Snapshot**
 3. Install **Snapshot Replication**
-4. After install launch the **Snapshot Replication** application.
+4. After install, launch **Snapshot Replication** application.
 5. Select the **Shared Folder** that you want to enable snapshots.
-6. Clcik **Snapshots**
+6. Click **Snapshots**
 7. Click **Settings**
+8. Click **Enable snapshot schedule**
+9. For **Frequency** select **Every 2 hours**
+10. Select **Retention**
+11. Click **Enable retention policy**
+12. Select **Advanced retention policy**
+13. Click **Set Rule**
+14. Copy the schedule from the screenshot<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/d2feeef82b8103b093bf6554d5cd1bef35f12f7e/Synology%20Retention%20Policy.png" width="500">
+15. Click **OK**
+16. Select **Advanced**
+17. Click **Make snapshots visible**
+18. Click **OK**
+
+**Create Recycle Bin Task**
+1. Open **Control Panel**
+2. Select **Task Scheduler**
+3. Click **Create**
+4. Select **Scheduled Task**
+5. Select **Recycle Bin**
+6. For **Task** enter **Recycle Bin**
+7. Check **Enabled**
+8. Select **Schedule**
+9. Confirm it set to run **Daily**
+10. Select **Task Settings**
+11. For **Retention Policy** select **Number of days to retain deleted files** and put **14**
+12. Click **OK**
+13. Click **Apply**
+
+**Set up the Storage Analyzer**
+
+Storage analyzer allows you to see what files/folders are taking up space on your NAS and if any duplicates exist. It’s a powerful tool that periodically comes in handy.
+
+1. Open **Package Center**
+2. Search **Analyzer**
+3. Install **Storage Analyzer**
+4. When it’s done installing, **Open** the package. 
+5. You will be asked to specify a location to save your reports. Select **Yes**. Specify a location to save your reports and the frequency you’d like reports generated.
+6. A wizard will then start to assist you in the creation of the scheduled task. Give your report a name, set a schedule, and then specify the total number of reports you’d like to keep.
+7. Keep all Report Types selected (unless you don’t want specific ones generated) and click **Next**.
+8. Select **Analyze all current and future shared folders**
+9. Click **Next**
+10. Select the settings you’d like to use to find duplicate files.
+11.  Click **Generate reports now**
+12.  Click **Done**
+
+**Uninterruptible Power Supply (UPS)**
+
+If your data is important to you, a UPS is the cheapest security blanket you can buy. It ensures that consistent power is delivered to your NAS and in the event of a power outage, it can safely power down your NAS. If you don’t have a UPS, it requires an additional purchase, but in my opinion, it’s well worth it.
+
+1. Open **Control Panel**
+2. Click **Hardware & Power**
+3. Click **UPS**
+4. Click **Enable USP support**
+5. For **USB type** select **USB UPS**
+6. Select **Customized time**
+7. Set to **5 minute(s)**
+
+**Setup Notifications**
