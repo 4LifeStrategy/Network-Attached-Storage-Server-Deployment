@@ -304,3 +304,92 @@ Notification should had already been set if you completed the initial setup with
 5. Click **Apply**
 
 ## Security Configuration
+
+**Set up Automatic DSM Update**
+
+1. Open **Control Panel**
+2. Click **Update & Restore**
+3. Click **Update Settings**
+4. Select **Automatic install important updates that fixed critical security issues and bugs (Recommended)**
+5. For **Check schedule** set **day and time**<br />*Pick a date and time (preferably during the middle of the night) that updates will be installed.*
+6. Click **OK**
+
+**Change Default Ports**
+
+After the initial Synology NAS setup process is completed, the default HTTP port is 5000 and the default HTTPS port is 5001. I always change these ports as it’s a good security practice to do so.
+
+If you don’t intend on exposing your NAS to the internet, I wouldn’t say it’s necessary, but if you do intend on exposing it, I would change these ports.
+
+1. Open **Control Panel**
+2. Click **Login Portal**
+3. Change port 5000/5001 to ports of your choosing. We are using **5050/5051**
+4. Click **Automatically redirect HTTP connection to HTTPS for DSM desktop**
+   
+**Enable Denial-of-Service (DoS) Protection**
+
+A Denial-of-Service (DoS) attack’s purpose is to shut down your machine or network making it inaccessible. Synology has an easy way to protect against this.
+
+1. Open **Control Panel**
+2. Click **Security**
+3. Click **Protection**
+4. Click **Enable DoS protection**
+5. Click **OK**
+
+**Configure Auto Block**
+
+An IP address will be blocked if it reaches the number of failed login attempts within the time period entered.
+
+Open **Control Panel**
+Click **Security**
+Click **Protection**
+Click **Enable auto block**
+For **Login attempts** to **3**
+For **Within (minutes)** to **10**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/77ad1e923d8e5bbc5ecb3c99a4bf7a52dd09e318/Auto%20Block%20Policy.png" width="500">
+Click **Apply**
+
+## Synology’s QuickConnect
+
+Synology QuickConnect allows you to access your NAS from outside of your local network. This is Synology’s way of ensuring you don’t need to open ports to your NAS to access your data externally.
+
+1. Open **Control Panel**
+2. Click **External Access**
+3. Click **Enable QuickConnect**
+4. For **QuickConnect ID** put the ID you want.
+5. Click **Advanced Settings**
+6. Confirm **Enable QuickConnect relay service**
+7. Deselect **DSM**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/ea8ce0d6295994aa3d2df3bf9707e5a8bc2c481d/Synology%20QuickConnect%20Permission.png" width="500">
+8. Click **Apply**
+9. Click **Apply**
+
+## Plex Media Server
+
+Plex is a one-stop destination to stream your self-hosted movies, TV shows, and music. We will download [Plex for synology NAS 7.2](https://www.plex.tv/media-server-downloads/?cat=nas&plat=synology-dsm72#plex-media-server) The follow to install and setup Plex. IT recommended to have a Plex Pass but not required.
+
+1. Open **Package Center**
+2. Click **Manual Install**
+3. Choose the **[Plex for synology NAS 7.2](https://www.plex.tv/media-server-downloads/?cat=nas&plat=synology-dsm72#plex-media-server)** file you downloaded
+4. Select the location of where the Log Files will be installed – Can be left blank and it will save to the default directory
+5. Open **Control Panel**
+6. Click **Shared Folders**
+7. Select **Folder where your Media is located**
+8. Click **Edit**
+9.  Click **Permissions**
+10. Select **System internal user**
+11. Click Read/Write for **PlexMediaServer**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/d6df656a4eacb9c3b2588e5c22228605d6049a2d/Synology%20Plex%20Shared%20Folder%20Permission.png" width="500">
+12. Click **Save**
+13. Select **Shared Media**
+14. Click **Edit**
+15.  Click **Permissions**
+16. Select **System internal user**
+17. Click Read/Write for **PlexMediaServer**
+18. Head back into the **Package Center** window and click **OK** to verify you gave plex proper permissions.
+19. Once installed click **Open**
+20. Click **Claim Server** and create or sign-in to your Plex account
+21. Click on your **NAS**
+22. Click **Manage Libraries**
+23. Click **Add Library** and map it to the **Shared Media** folder we created.<br />*You would need to create **Movie**, **TV Shows**, and **Music** subfolder*<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/7181790bb4373161d5d08faecfc5d62467a1d41d/Plex%20Libaries.png" width="500">
+24. Click on **Remote Access**
+25. Click **Enable Remote Access**
+26. Click **Manual specified public port**
+27. Set port to **32400**
+28. Click **Apply**<br /><img src="https://github.com/4LifeStrategy/Network-Attached-Storage-Server-Deployment/blob/a3487bf4fff3dc8e7ce96fa7f69c54400aea4b6a/Plex%20Remote%20Connect.png" width="500">
